@@ -130,14 +130,14 @@ def create_locator(germanium, selector, strategy='detect'):
     if hasattr(selector, '__call__'):
         return create_locator(germanium, selector())
 
-    if isinstance(selector, collections.Iterable) and not isinstance(selector, str):
+    if isinstance(selector, collections.Iterable) and not isinstance(selector, basestring):
         for item in selector:
             if not isinstance(item, WebElement):
                 _raise_bad_selector_type(selector)
 
         return StaticElementLocator(germanium, selector)
 
-    if not isinstance(selector, str):
+    if not isinstance(selector, basestring):
         _raise_bad_selector_type(selector)
 
     if selector == "alert":

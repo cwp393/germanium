@@ -8,8 +8,6 @@ def highlight_g(context,
                 selector,
                 show_seconds=2,
                 *args,
-                console=False,
-                blink_duration=0.2,
                 **kw):
     """
     Highlight the given element, by blinking it on the UI.
@@ -22,6 +20,16 @@ def highlight_g(context,
     :param kw:
     :return:
     """
+    console = False
+    if "console" in kw:
+        console = kw.get("console")
+        kw.pop("console")
+
+    blink_duration = 0.2
+    if "blink_duration" in kw:
+        blink_duration = kw.get("blink_duration")
+        kw.pop("blink_duration")
+
     germanium = find_germanium_object(context)
 
     if isinstance(selector, WebElement):

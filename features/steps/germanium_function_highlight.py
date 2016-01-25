@@ -2,7 +2,7 @@ from behave import *
 from selenium.webdriver.remote.webelement import WebElement
 from time import sleep
 
-from features.steps.asserts import *
+from .asserts import *
 from germanium.static import *
 
 use_step_matcher("re")

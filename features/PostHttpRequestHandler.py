@@ -1,5 +1,5 @@
 import cgi
-from http.server import SimpleHTTPRequestHandler
+from SimpleHTTPServer import SimpleHTTPRequestHandler
 
 
 class PostHttpRequestHandler(SimpleHTTPRequestHandler):

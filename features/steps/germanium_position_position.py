@@ -1,6 +1,6 @@
 from behave import *
 
-from features.steps.asserts import *
+from .asserts import *
 from germanium.static import *
 
 use_step_matcher("re")

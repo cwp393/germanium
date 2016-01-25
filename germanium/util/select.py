@@ -5,7 +5,17 @@ from germanium.impl import _ensure_list
 from selenium.webdriver.support.select import Select
 
 
-def select_g(context, selector, text=None, *argv, index=None, value=None, **kw):
+def select_g(context, selector, text=None, *argv, **kw):
+    index = None
+    if "index" in kw:
+        index = kw.get("index")
+        kw.pop("index")
+
+    value = None
+    if "value" in kw:
+        value = kw.get("value")
+        kw.pop("value")
+
     germanium = find_germanium_object(context)
     select_element = _element(germanium, selector)
 

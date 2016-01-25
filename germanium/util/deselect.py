@@ -5,7 +5,17 @@ from ._action_element_finder import _element
 from .find_germanium_object import find_germanium_object
 
 
-def deselect_g(context, selector, text=None, *argv, index=None, value=None, **kw):
+def deselect_g(context, selector, text=None, *argv, **kw):
+    index = None
+    if "index" in kw:
+        index = kw.get("index")
+        kw.pop("index")
+
+    value = None
+    if "value" in kw:
+        value = kw.get("value")
+        kw.pop("value")
+
     germanium = find_germanium_object(context)
     select_element = _element(germanium, selector)
 

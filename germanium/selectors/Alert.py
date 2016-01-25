@@ -14,7 +14,7 @@ class Alert(object):
         """
         return self.exists(*args, **kwargs)
 
-    def element(self, *argv, germanium=None, **kw):
+    def element(self, *argv, **kw):
         """
         Returns the existing alert instance for the given germanium instance.
         If the alert is not present, then it will return None.
@@ -26,9 +26,15 @@ class Alert(object):
         :return:
         """
         from germanium.static import S
+
+        germanium = None
+        if "germanium" in kw:
+            germanium = kw.get("germanium")
+            kw.pop("germanium")
+
         return S(self, germanium=germanium).element(*argv, **kw)
 
-    def element_list(self, *argv, germanium=None, **kw):
+    def element_list(self, *argv, **kw):
         """
         Returns the existing alert instance as a list for the given
         germanium instance. If the alert is not present, then it will
@@ -40,9 +46,15 @@ class Alert(object):
         :return:
         """
         from germanium.static import S
+
+        germanium = None
+        if "germanium" in kw:
+            germanium = kw.get("germanium")
+            kw.pop("germanium")
+
         return S(self, germanium=germanium).element(*argv, **kw)
 
-    def exists(self, *argv, germanium=None, **kw):
+    def exists(self, *argv, **kw):
         """
         Returns true if an alert is present for the given germanium instance.
         If it is not present, then it will return false. If the germanium parameter
@@ -53,9 +65,15 @@ class Alert(object):
         :return:
         """
         from germanium.static import S
+
+        germanium = None
+        if "germanium" in kw:
+            germanium = kw.get("germanium")
+            kw.pop("germanium")
+
         return S(self, germanium=germanium).exists(*argv, **kw)
 
-    def not_exists(self, *argv, germanium=None, **kw):
+    def not_exists(self, *argv, **kw):
         """
         Returns false if an alert is present for the given germanium instance.
         If it is not present, then it will return true. If the germanium parameter
@@ -66,9 +84,15 @@ class Alert(object):
         :return:
         """
         from germanium.static import S
+
+        germanium = None
+        if "germanium" in kw:
+            germanium = kw.get("germanium")
+            kw.pop("germanium")
+
         return S(self, germanium=germanium).not_exists(*argv, **kw)
 
-    def text(self, *argv, germanium=None, **kw):
+    def text(self, *argv, **kw):
         """
         Returns the text of the currently visible alert. If the germanium parameter
         is not set it will use instead the `germanium.static.get_germanium` instance.
@@ -78,9 +102,15 @@ class Alert(object):
         :return:
         """
         from germanium.static import S
+
+        germanium = None
+        if "germanium" in kw:
+            germanium = kw.get("germanium")
+            kw.pop("germanium")
+
         return S(self, germanium=germanium).text(*argv, **kw)
 
-    def accept(self, *argv, germanium=None, **kw):
+    def accept(self, *argv, **kw):
         """
         Accepts the current alert from the germanium instance. If the germanium parameter
         is not set it will use instead the `germanium.static.get_germanium` instance.
@@ -90,11 +120,17 @@ class Alert(object):
         :return:
         """
         from germanium.static import S
+
+        germanium = None
+        if "germanium" in kw:
+            germanium = kw.get("germanium")
+            kw.pop("germanium")
+
         alert = S(self, germanium=germanium).element(*argv, **kw)
 
         wait(lambda: alert.accept() or True, timeout=1)
 
-    def dismiss(self, *argv, germanium=None, **kw):
+    def dismiss(self, *argv, **kw):
         """
         Dismisses (i.e. cancels) the current alert from the germanium instance.
         If the germanium parameter is not set it will use instead the
@@ -105,11 +141,17 @@ class Alert(object):
         :return:
         """
         from germanium.static import S
+
+        germanium = None
+        if "germanium" in kw:
+            germanium = kw.get("germanium")
+            kw.pop("germanium")
+
         alert = S(self, germanium=germanium).element(*argv, **kw)
 
         wait(lambda: alert.dismiss() or True, timeout=1)
 
-    def send_keys(self, text, *argv, germanium=None, **kw):
+    def send_keys(self, text, *argv, **kw):
         """
         Types the given keys into the alert.
         If the germanium parameter is not set it will use instead the
@@ -121,11 +163,17 @@ class Alert(object):
         :return:
         """
         from germanium.static import S
+
+        germanium = None
+        if "germanium" in kw:
+            germanium = kw.get("germanium")
+            kw.pop("germanium")
+
         alert = S(self, germanium=germanium).element(*argv, **kw)
 
         alert.send_keys(text)
 
-    def authenticate(self, username, password, *argv, germanium=None, **kw):
+    def authenticate(self, username, password, *argv, **kw):
         """
         Fills in the username and password into the alert.
         If the germanium parameter is not set it will use instead the
@@ -138,6 +186,12 @@ class Alert(object):
         :return:
         """
         from germanium.static import S
+
+        germanium = None
+        if "germanium" in kw:
+            germanium = kw.get("germanium")
+            kw.pop("germanium")
+
         alert = S(self, germanium=germanium).element(*argv, **kw)
 
         wait(lambda: alert.autenticate(username, password) or True, timeout=1)

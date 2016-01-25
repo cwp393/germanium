@@ -3,7 +3,7 @@ from time import sleep
 from germanium.impl import _ensure_list
 
 
-def wait(closures, *extra_closures, while_not=None, timeout=10):
+def wait(closure, *args, **kw):
     """
     Executes a function given as argument every 400 milliseconds until it returns true. If it goes more than
     the timeout seconds, then this function throws an exception. If the function throws an exception, then
@@ -13,8 +13,14 @@ def wait(closures, *extra_closures, while_not=None, timeout=10):
     :param timeout:
     :param extra_closures:
     """
+    while_not = kw.get("while_not", [])
+    extra_closures = kw.get("extra_closures", [])
+    timeout = kw.get("timeout", 10)
+
     while_not = _ensure_list(while_not)
-    closures = list(_ensure_list(closures))
+
+    closures = _ensure_list(closure)
+    closures.extend(args)
     closures.extend(extra_closures)
 
     def closure_try_catch():

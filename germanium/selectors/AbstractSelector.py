@@ -55,7 +55,7 @@ class AbstractSelector(object):
         """
         return self.element_list(*args, **kwargs)
 
-    def element(self, *argv, germanium=None, **kw):
+    def element(self, *argv, **kw):
         """
         If the germanium is provided, the selector is evaluated using
         germanium.S. If the germanium attribute is not provided,
@@ -66,9 +66,15 @@ class AbstractSelector(object):
         :return:
         """
         from germanium.static import S
+
+        germanium = None
+        if "germanium" in kw:
+            germanium = kw.get("germanium")
+            kw.pop("germanium")
+
         return S(self, germanium=germanium).element(*argv, **kw)
 
-    def element_list(self, index=None, *argv, germanium=None, **kw):
+    def element_list(self, index=None, *argv, **kw):
         """
         If the germanium is provided, the selector is evaluated using
         germanium.S. If the germanium attribute is not provided,
@@ -79,9 +85,15 @@ class AbstractSelector(object):
         :return:
         """
         from germanium.static import S
+
+        germanium = None
+        if "germanium" in kw:
+            germanium = kw.get("germanium")
+            kw.pop("germanium")
+
         return S(self, germanium=germanium).element_list(index=index, *argv, **kw)
 
-    def exists(self, *argv, germanium=None, **kw):
+    def exists(self, *argv, **kw):
         """
         If the germanium is provided, the selector is evaluated using
         germanium.S. If the germanium attribute is not provided,
@@ -92,9 +104,15 @@ class AbstractSelector(object):
         :return:
         """
         from germanium.static import S
+
+        germanium = None
+        if "germanium" in kw:
+            germanium = kw.get("germanium")
+            kw.pop("germanium")
+
         return S(self, germanium=germanium).exists(*argv, **kw)
 
-    def not_exists(self, *argv, germanium=None, **kw):
+    def not_exists(self, *argv, **kw):
         """
         If the germanium is provided, the selector is evaluated using
         germanium.S. If the germanium attribute is not provided,
@@ -105,9 +123,15 @@ class AbstractSelector(object):
         :return:
         """
         from germanium.static import S
+
+        germanium = None
+        if "germanium" in kw:
+            germanium = kw.get("germanium")
+            kw.pop("germanium")
+
         return S(self, germanium=germanium).not_exists(*argv, **kw)
 
-    def text(self, *argv, germanium=None, only_visible=True, **kw):
+    def text(self, *argv, **kw):
         """
         Returns the text of the `element()` returned by this selector.
         If the germanium is provided, the selector is evaluated using
@@ -119,6 +143,12 @@ class AbstractSelector(object):
         :return:
         """
         from germanium.static import S
+
+        germanium = None
+        if "germanium" in kw:
+            germanium = kw.get("germanium")
+            kw.pop("germanium")
+
         return S(self, germanium=germanium).text(*argv, **kw)
 
 
@@ -216,7 +246,7 @@ def _ensure_selector(item):
     if hasattr(item, '__call__'):
         return _ensure_selector(item())
 
-    if isinstance(item, str):
+    if isinstance(item, basestring):
         if item.startswith("js:"):
             return JsSelector(item[3:])
         elif item.startswith("xpath:"):

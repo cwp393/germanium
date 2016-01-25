@@ -4,7 +4,7 @@ from selenium.webdriver.remote.webelement import WebElement
 
 from germanium.static import *
 
-from features.steps.asserts import *
+from .asserts import *
 
 use_step_matcher("re")
 

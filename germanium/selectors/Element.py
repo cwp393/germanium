@@ -5,7 +5,6 @@ from germanium.impl import _ensure_list
 class Element(AbstractSelector):
     def __init__(self,
                  tag_name=None,
-                 *args,
                  index=None,
                  id=None,
                  exact_text=None,

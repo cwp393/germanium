@@ -5,7 +5,6 @@ from germanium.impl import _ensure_list
 class Element(AbstractSelector):
     def __init__(self,
                  tag_name=None,
-                 *args,
                  index=None,
                  id=None,
                  exact_text=None,
@@ -56,7 +55,7 @@ class Element(AbstractSelector):
         if extra_xpath:
             xpath_locator += extra_xpath
 
-        if isinstance(index, str):
+        if isinstance(index, basestring):
             index = int(index)
 
         if index is not None:

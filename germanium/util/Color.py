@@ -9,7 +9,7 @@ class Color(object):
     returned by a get_style() call.
     """
     def __init__(self, definition):
-        if not isinstance(definition, str):
+        if not isinstance(definition, basestring):
             raise Exception("Unable to parse color %s" % definition)
 
         color_definition = definition.lower()

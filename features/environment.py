@@ -1,6 +1,6 @@
 import os
-from http.server import SimpleHTTPRequestHandler
-from socketserver import ThreadingTCPServer
+from SimpleHTTPServer import SimpleHTTPRequestHandler
+from SocketServer import ThreadingTCPServer
 from threading import Thread
 
 from germanium.static import *

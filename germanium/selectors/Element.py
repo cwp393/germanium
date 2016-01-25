@@ -5,7 +5,6 @@ import collections
 class Element(AbstractSelector):
     def __init__(self,
                  tag_name=None,
-                 *args,
                  index=None,
                  id=None,
                  exact_text=None,
@@ -41,7 +40,7 @@ class Element(AbstractSelector):
 
         if css_classes is None:
             css_classes = []
-        elif isinstance(css_classes, str):
+        elif isinstance(css_classes, basestring):
             css_classes = css_classes.split()
         elif not isinstance(css_classes, collections.Iterable):
             raise Exception("A css_classes attribute was sent that is not an `iterable` nor "
@@ -63,7 +62,7 @@ class Element(AbstractSelector):
         if extra_xpath:
             xpath_locator += extra_xpath
 
-        if isinstance(index, str):
+        if isinstance(index, basestring):
             index = int(index)
 
         if index is not None:

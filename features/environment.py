@@ -1,10 +1,9 @@
 import os
-#from http.server import SimpleHTTPRequestHandler
-from socketserver import ThreadingTCPServer
+from SocketServer import ThreadingTCPServer
 from threading import Thread
 
 from germanium.static import *
-from features.PostHttpRequestHandler import PostHttpRequestHandler
+from .PostHttpRequestHandler import PostHttpRequestHandler
 
 
 def before_all(context):

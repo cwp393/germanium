@@ -80,7 +80,7 @@ def create_locator(germanium, selector, strategy='detect'):
     if hasattr(selector, '__call__'):
         return create_locator(germanium, selector())
 
-    if not isinstance(selector, str):
+    if not isinstance(selector, basestring):
         raise Exception('Unable to build locator from the selector. '
                         'The selector: %s, that is of type: %s is '
                         'not a string selector, does not inherit from '

@@ -1,7 +1,7 @@
 from behave import *
 from germanium.static import *
 
-from features.steps.asserts import *
+from .asserts import *
 
 
 @step(u'I drag and drop from the #startDiv to the #endDiv')

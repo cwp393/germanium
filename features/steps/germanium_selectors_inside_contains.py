@@ -1,7 +1,7 @@
 from behave import *
 
 from germanium.static import *
-from steps.asserts import assert_equals, assert_false
+from .asserts import assert_equals, assert_false
 
 use_step_matcher("re")
 

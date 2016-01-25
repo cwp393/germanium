@@ -183,7 +183,7 @@ def _ensure_selectors(items):
     for i in range(len(items)):
         item = items[i]
 
-        if isinstance(item, str):
+        if isinstance(item, basestring):
             if item.startswith("js:"):
                 items[i] = JsSelector(item[3:])
             elif item.startswith("xpath:"):

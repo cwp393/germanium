@@ -1,12 +1,12 @@
-from http.server import SimpleHTTPRequestHandler
-from socketserver import TCPServer
+import SimpleHTTPServer
+import SocketServer
 from threading import Thread
 
 from behave import *
 
 def before_all(context):
-    Handler = SimpleHTTPRequestHandler
-    context._httpServer = TCPServer(("localhost", 8000), Handler)
+    Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
+    context._httpServer = SocketServer.TCPServer(("localhost", 8000), Handler)
 
     t = Thread(target=context._httpServer.serve_forever)
     t.start()

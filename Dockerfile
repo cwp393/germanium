@@ -6,7 +6,7 @@ ENV REFRESHED_AT="2016.03.29-21:10:18"
 # allowed options are firefox, chrome.
 ENV TEST_BROWSER=firefox
 
-ENV PYTHON_VERSION=3.5.1
+ENV PYTHON_VERSION=3.4.4
 
 ENV RUN_VNC_SERVER=1
 ENV RUN_WEB_INTERFACE=0
@@ -60,7 +60,7 @@ RUN mkdir /build && \
     make install && \
     rm -fr /build
 
-ENV PYTHON_BINARY=/usr/local/bin/python3.5
+ENV PYTHON_BINARY=/usr/local/bin/python3.4
 
 # Install behave and germanium into the package.
 RUN $PYTHON_BINARY -m ensurepip && \

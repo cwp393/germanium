@@ -1,5 +1,6 @@
-from .AbstractSelector import AbstractSelector
 import collections
+
+from .AbstractSelector import AbstractSelector
 
 
 class Element(AbstractSelector):
@@ -9,6 +10,7 @@ class Element(AbstractSelector):
                  index=None,
                  id=None,
                  exact_text=None,
+                 trim_text=False,
                  contains_text=None,
                  css_classes=None,
                  exact_attributes=None,
@@ -33,11 +35,15 @@ class Element(AbstractSelector):
 
         xpath_locator = './/' + tag_name
 
+        string_content = 'string()'
+        #if trim_text:
+        #    string_content = r'replace(string(), "^\s*(.*)\s*$", "hello world")'
+
         if contains_text:
-            xpath_locator += "[contains(normalize-space(string()), '%s')]" % contains_text
+            xpath_locator += "[contains(normalize-space(%s), '%s')]" % (string_content, contains_text)
 
         if exact_text:
-            xpath_locator += "[string() = '%s']" % exact_text
+            xpath_locator += "[matches(string(), 'hello world')]" #% (exact_text)
 
         if css_classes is None:
             css_classes = []

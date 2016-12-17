@@ -50,3 +50,17 @@ Scenario: Find an element with an index.
   And I go to 'http://localhost:8000/features/test-site/selectors/element.html'
   When I look for the 3rd div element
   Then I find the element with id: 'formattedText'
+
+@8
+Scenario: Find a multi-line text element with a trimmed exact text search.
+  Given I open the browser
+  And I go to 'http://localhost:8000/features/test-site/selectors/element.html'
+  When I look for the first multi line pre element with trimmed text 'hello world'
+  Then I find the element with id: 'first-pre-multiline'
+
+@9
+Scenario: Find a single-line text element with a trimmed exact text search.
+  Given I open the browser
+  And I go to 'http://localhost:8000/features/test-site/selectors/element.html'
+  When I look for the first single line pre element with trimmed text 'hello world'
+  Then I find the element with id: 'first-pre-multiline'

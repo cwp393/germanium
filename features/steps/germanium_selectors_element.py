@@ -48,3 +48,17 @@ def step_impl(context, element_name, attribute_name, attribute_value):
 @step(u"I look for the 3rd div element")
 def step_impl(context):
     context.found_element = Element("div", index=3).element()
+
+
+@step(u"I look for the first multi line pre element with trimmed text 'hello world'")
+def step_impl(context):
+    context.found_element = Element("pre",
+                                    exact_text="hello world",
+                                    trim_text=True).element()
+
+
+@step(u"I look for the first single line pre element with trimmed text 'hello world'")
+def step_impl(context):
+    context.found_element = Element("pre",
+                                    exact_text="hello world",
+                                    trim_text=True).element()

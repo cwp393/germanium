@@ -52,5 +52,6 @@ class XPathLocator(DeferredLocator):
                              type(result),
                              self.selector,
                              self))
-        except NoSuchElementException:
+        except NoSuchElementException as e:
+            print(e)
             return None
